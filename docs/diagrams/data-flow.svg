@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" role="img" aria-labelledby="title desc">
+  <title id="title">Data Flow Diagram</title>
+  <desc id="desc">Data flow from insurance selection through request model, premium calculation, response model, and result table.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title{font-family:Arial,sans-serif;font-size:24px;font-weight:700;fill:#0f766e;text-anchor:middle}
+      .box{fill:#ffffff;stroke:#0f766e;stroke-width:2;rx:10}
+      .calc{fill:#ecfdf5;stroke:#0f766e;stroke-width:2;rx:10}
+      .txt{font-family:Arial,sans-serif;font-size:15px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .line{stroke:#334155;stroke-width:2;marker-end:url(#arrow);fill:none}
+    </style>
+  </defs>
+  <rect width="1100" height="620" fill="#f8fafc"/>
+  <text x="550" y="42" class="title">Data Flow Diagram</text>
+
+  <rect x="60" y="100" width="180" height="64" class="box"/>
+  <text x="150" y="138" class="txt">Insurance Selection</text>
+  <rect x="330" y="100" width="190" height="64" class="box"/>
+  <text x="425" y="138" class="txt">Dynamic Form Fields</text>
+  <rect x="610" y="100" width="170" height="64" class="box"/>
+  <text x="695" y="138" class="txt">User Input Data</text>
+  <rect x="870" y="100" width="170" height="64" class="box"/>
+  <text x="955" y="138" class="txt">collectFormData()</text>
+
+  <rect x="870" y="250" width="170" height="64" class="box"/>
+  <text x="955" y="288" class="txt">POST API Request</text>
+  <rect x="610" y="250" width="170" height="64" class="box"/>
+  <text x="695" y="288" class="txt">PremiumRequest</text>
+  <rect x="330" y="250" width="190" height="64" class="calc"/>
+  <text x="425" y="288" class="txt">InsuranceController</text>
+  <rect x="60" y="250" width="180" height="64" class="calc"/>
+  <text x="150" y="288" class="txt">Premium Formula</text>
+
+  <rect x="60" y="400" width="180" height="64" class="calc"/>
+  <text x="150" y="438" class="txt">GST + Total + EMI</text>
+  <rect x="330" y="400" width="190" height="64" class="box"/>
+  <text x="425" y="438" class="txt">PremiumResponse</text>
+  <rect x="610" y="400" width="170" height="64" class="box"/>
+  <text x="695" y="438" class="txt">JSON Response</text>
+  <rect x="870" y="400" width="170" height="64" class="box"/>
+  <text x="955" y="438" class="txt">Result Table</text>
+
+  <path d="M240 132 H330" class="line"/>
+  <path d="M520 132 H610" class="line"/>
+  <path d="M780 132 H870" class="line"/>
+  <path d="M955 164 V250" class="line"/>
+  <path d="M870 282 H780" class="line"/>
+  <path d="M610 282 H520" class="line"/>
+  <path d="M330 282 H240" class="line"/>
+  <path d="M150 314 V400" class="line"/>
+  <path d="M240 432 H330" class="line"/>
+  <path d="M520 432 H610" class="line"/>
+  <path d="M780 432 H870" class="line"/>
+</svg>

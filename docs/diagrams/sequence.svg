@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+  <title id="title">Sequence Diagram</title>
+  <desc id="desc">Sequence of interactions between user, browser UI, Spring Boot API, and InsuranceController.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title{font-family:Arial,sans-serif;font-size:24px;font-weight:700;fill:#0f766e;text-anchor:middle}
+      .head{fill:#ecfdf5;stroke:#0f766e;stroke-width:2;rx:10}
+      .txt{font-family:Arial,sans-serif;font-size:15px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .msg{font-family:Arial,sans-serif;font-size:13px;fill:#334155}
+      .life{stroke:#94a3b8;stroke-width:2;stroke-dasharray:6 5}
+      .line{stroke:#334155;stroke-width:2;marker-end:url(#arrow);fill:none}
+      .return{stroke:#334155;stroke-width:2;stroke-dasharray:6 5;marker-end:url(#arrow);fill:none}
+    </style>
+  </defs>
+  <rect width="1000" height="560" fill="#f8fafc"/>
+  <text x="500" y="42" class="title">Sequence Diagram</text>
+
+  <rect x="70" y="80" width="140" height="52" class="head"/>
+  <text x="140" y="112" class="txt">User</text>
+  <rect x="310" y="80" width="150" height="52" class="head"/>
+  <text x="385" y="112" class="txt">Browser UI</text>
+  <rect x="555" y="80" width="160" height="52" class="head"/>
+  <text x="635" y="112" class="txt">Spring Boot API</text>
+  <rect x="795" y="80" width="165" height="52" class="head"/>
+  <text x="878" y="112" class="txt">InsuranceController</text>
+
+  <path d="M140 132 V520" class="life"/>
+  <path d="M385 132 V520" class="life"/>
+  <path d="M635 132 V520" class="life"/>
+  <path d="M878 132 V520" class="life"/>
+
+  <path d="M140 180 H385" class="line"/>
+  <text x="170" y="172" class="msg">Select insurance type</text>
+  <path d="M385 230 H140" class="return"/>
+  <text x="185" y="222" class="msg">Display related fields</text>
+  <path d="M140 280 H385" class="line"/>
+  <text x="170" y="272" class="msg">Enter details and submit</text>
+  <path d="M385 330 H635" class="line"/>
+  <text x="410" y="322" class="msg">POST /api/calculate-premium</text>
+  <path d="M635 380 H878" class="line"/>
+  <text x="660" y="372" class="msg">Map JSON to PremiumRequest</text>
+  <path d="M878 430 C930 430 930 470 878 470" class="line"/>
+  <text x="720" y="454" class="msg">Calculate premium, GST, total, EMI</text>
+  <path d="M878 500 H635" class="return"/>
+  <text x="700" y="492" class="msg">PremiumResponse</text>
+  <path d="M635 520 H385" class="return"/>
+  <text x="445" y="512" class="msg">JSON response</text>
+  <path d="M385 545 H140" class="return"/>
+  <text x="190" y="537" class="msg">Display result table</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="360" viewBox="0 0 1100 360" role="img" aria-labelledby="title desc">
+  <title id="title">System Architecture Diagram</title>
+  <desc id="desc">Architecture flow from user browser to frontend, Spring Boot API, controller, premium logic, and result display.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box{fill:#ffffff;stroke:#0f766e;stroke-width:2;rx:10}
+      .service{fill:#ecfdf5;stroke:#0f766e;stroke-width:2;rx:10}
+      .label{font-family:Arial,sans-serif;font-size:18px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .sub{font-family:Arial,sans-serif;font-size:13px;fill:#475569;text-anchor:middle}
+      .line{stroke:#334155;stroke-width:2.2;marker-end:url(#arrow);fill:none}
+      .caption{font-family:Arial,sans-serif;font-size:22px;font-weight:700;fill:#0f766e;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="1100" height="360" fill="#f8fafc"/>
+  <text x="550" y="42" class="caption">System Architecture Diagram</text>
+
+  <rect x="40" y="120" width="130" height="90" class="box"/>
+  <text x="105" y="155" class="label">User</text>
+  <text x="105" y="180" class="sub">Enters details</text>
+
+  <rect x="230" y="100" width="170" height="130" class="box"/>
+  <text x="315" y="145" class="label">Browser UI</text>
+  <text x="315" y="170" class="sub">HTML, CSS</text>
+  <text x="315" y="192" class="sub">JavaScript</text>
+
+  <rect x="470" y="100" width="190" height="130" class="service"/>
+  <text x="565" y="145" class="label">Spring Boot API</text>
+  <text x="565" y="170" class="sub">POST JSON request</text>
+  <text x="565" y="192" class="sub">/api/calculate-premium</text>
+
+  <rect x="730" y="90" width="160" height="70" class="service"/>
+  <text x="810" y="120" class="label">Controller</text>
+  <text x="810" y="143" class="sub">InsuranceController</text>
+
+  <rect x="730" y="210" width="160" height="70" class="service"/>
+  <text x="810" y="240" class="label">Premium Logic</text>
+  <text x="810" y="263" class="sub">Rules + GST + EMI</text>
+
+  <rect x="950" y="120" width="120" height="90" class="box"/>
+  <text x="1010" y="155" class="label">Result</text>
+  <text x="1010" y="180" class="sub">Premium table</text>
+
+  <path d="M170 165 H230" class="line"/>
+  <path d="M400 165 H470" class="line"/>
+  <path d="M660 135 H730" class="line"/>
+  <path d="M810 160 V210" class="line"/>
+  <path d="M890 245 C925 245 925 165 950 165" class="line"/>
+  <path d="M950 195 C785 320 410 310 315 230" class="line"/>
+</svg>

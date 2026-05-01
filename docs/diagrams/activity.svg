@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="760" viewBox="0 0 900 760" role="img" aria-labelledby="title desc">
+  <title id="title">Activity Diagram</title>
+  <desc id="desc">Activity flow for selecting insurance, submitting details, calculating premium, and displaying results.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title{font-family:Arial,sans-serif;font-size:24px;font-weight:700;fill:#0f766e;text-anchor:middle}
+      .node{fill:#ffffff;stroke:#0f766e;stroke-width:2;rx:10}
+      .decision{fill:#ecfdf5;stroke:#0f766e;stroke-width:2}
+      .txt{font-family:Arial,sans-serif;font-size:15px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .small{font-family:Arial,sans-serif;font-size:12px;fill:#475569;text-anchor:middle}
+      .line{stroke:#334155;stroke-width:2;marker-end:url(#arrow);fill:none}
+      .start{fill:#0f766e;stroke:#0f766e}
+      .end{fill:#ffffff;stroke:#0f766e;stroke-width:4}
+    </style>
+  </defs>
+  <rect width="900" height="760" fill="#f8fafc"/>
+  <text x="450" y="42" class="title">Activity Diagram</text>
+  <circle cx="450" cy="80" r="14" class="start"/>
+  <rect x="330" y="120" width="240" height="48" class="node"/>
+  <text x="450" y="150" class="txt">Select Insurance Type</text>
+  <rect x="330" y="200" width="240" height="48" class="node"/>
+  <text x="450" y="230" class="txt">Display Input Fields</text>
+  <rect x="330" y="280" width="240" height="48" class="node"/>
+  <text x="450" y="310" class="txt">Enter Details and Submit</text>
+  <polygon points="450,365 560,420 450,475 340,420" class="decision"/>
+  <text x="450" y="416" class="txt">Insurance Type?</text>
+  <text x="450" y="436" class="small">Health / Vehicle / Life / Travel</text>
+
+  <rect x="70" y="520" width="170" height="52" class="node"/>
+  <text x="155" y="551" class="txt">Health Formula</text>
+  <rect x="270" y="520" width="170" height="52" class="node"/>
+  <text x="355" y="551" class="txt">Vehicle Formula</text>
+  <rect x="470" y="520" width="170" height="52" class="node"/>
+  <text x="555" y="551" class="txt">Life Formula</text>
+  <rect x="670" y="520" width="170" height="52" class="node"/>
+  <text x="755" y="551" class="txt">Travel Formula</text>
+
+  <rect x="330" y="620" width="240" height="48" class="node"/>
+  <text x="450" y="650" class="txt">Calculate GST, Total, EMI</text>
+  <rect x="330" y="695" width="240" height="48" class="node"/>
+  <text x="450" y="725" class="txt">Display Result</text>
+
+  <path d="M450 94 V120" class="line"/>
+  <path d="M450 168 V200" class="line"/>
+  <path d="M450 248 V280" class="line"/>
+  <path d="M450 328 V365" class="line"/>
+  <path d="M340 420 C220 420 155 470 155 520" class="line"/>
+  <path d="M405 452 C375 475 355 490 355 520" class="line"/>
+  <path d="M495 452 C525 475 555 490 555 520" class="line"/>
+  <path d="M560 420 C690 420 755 470 755 520" class="line"/>
+  <path d="M155 572 C155 605 330 590 380 620" class="line"/>
+  <path d="M355 572 V620" class="line"/>
+  <path d="M555 572 V620" class="line"/>
+  <path d="M755 572 C755 605 570 590 520 620" class="line"/>
+  <path d="M450 668 V695" class="line"/>
+</svg>

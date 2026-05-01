@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Insurance Premium Calculator Project Report</title>
+  <style>
+    @page { margin: 0.65in; }
+    body {
+      color: #0f172a;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11.5pt;
+      line-height: 1.55;
+      margin: 0;
+    }
+    h1 {
+      color: #0f766e;
+      font-size: 26pt;
+      margin: 0 0 18px;
+      text-align: center;
+    }
+    h2 {
+      border-bottom: 2px solid #99f6e4;
+      color: #0f766e;
+      font-size: 18pt;
+      margin: 28px 0 10px;
+      padding-bottom: 4px;
+    }
+    h3 {
+      color: #134e4a;
+      font-size: 14pt;
+      margin: 18px 0 8px;
+    }
+    p { margin: 8px 0; }
+    ul { margin: 7px 0 12px 22px; padding: 0; }
+    li { margin: 4px 0; }
+    code {
+      background: #f1f5f9;
+      border-radius: 4px;
+      color: #0f172a;
+      font-family: Menlo, Consolas, monospace;
+      font-size: 10pt;
+      padding: 1px 4px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 12px 0;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #ecfdf5; color: #134e4a; }
+    figure {
+      break-inside: avoid;
+      margin: 14px 0 24px;
+      text-align: center;
+    }
+    img {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      max-height: 8.8in;
+      max-width: 100%;
+    }
+    figcaption {
+      color: #475569;
+      font-size: 10pt;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+<h1>Insurance Premium Calculator Project Report</h1>
+<h2>Abstract</h2>
+<p>The Insurance Premium Calculator is a web-based application developed to estimate insurance premiums for different policy categories, including health, vehicle, life, and travel insurance. The system provides a simple user interface where users select an insurance type, enter relevant details, and receive calculated premium information. The application calculates the base premium, Goods and Services Tax (GST), total payable amount, and Equal Monthly Installment (EMI) options for 3, 6, 9, and 12 months.</p>
+<p>The project is implemented using Spring Boot for the backend REST API and HTML, CSS, and JavaScript for the frontend. The backend receives user input through a JSON request, applies predefined premium calculation rules, and returns a structured response. The frontend dynamically displays form fields based on the selected insurance type and presents the result in a clear tabular format. This project demonstrates the use of client-server communication, REST API design, form handling, conditional business logic, and basic financial computation.</p>
+<h2>Introduction</h2>
+<p>Insurance is an important financial service that helps individuals manage risk by providing protection against uncertain events such as illness, accidents, loss of life, vehicle damage, and travel-related issues. In many cases, customers need an estimated premium before choosing a policy. Manual premium estimation can be time-consuming and may require repeated calculations based on age, coverage amount, vehicle value, policy term, trip cost, and other factors.</p>
+<p>The Insurance Premium Calculator project addresses this need by providing a simple digital tool for estimating premium amounts. The application allows users to choose from four insurance categories:</p>
+<ul>
+<li>Health Insurance</li>
+<li>Vehicle Insurance</li>
+<li>Life Insurance</li>
+<li>Travel Insurance</li>
+</ul>
+<p>Each insurance category requires different input values. For example, health insurance uses age, coverage amount, and number of family members, while vehicle insurance uses vehicle type, vehicle value, and vehicle age. The application processes these inputs using fixed calculation rules and displays premium details immediately.</p>
+<p>The system is designed as a lightweight web application. The frontend is served as a static HTML page, while the backend is implemented using Java and Spring Boot. This structure separates user interaction from business logic and makes the application easier to maintain and extend.</p>
+<h2>Literature Review</h2>
+<p>Insurance premium calculation systems are widely used in the insurance and financial technology sectors. Traditional premium calculation depends on actuarial models, risk assessment, customer profile analysis, claim history, demographic data, and regulatory requirements. Large-scale insurance platforms often use advanced statistical models and machine learning techniques to evaluate risk more accurately. However, for academic and prototype systems, rule-based premium calculation is commonly used because it is easy to understand, implement, and test.</p>
+<p>Web-based financial calculators are popular because they provide instant results and improve user convenience. A typical calculator application includes a user interface, input validation, business logic, and result display. Modern web applications commonly use REST APIs to exchange data between the frontend and backend. REST architecture is suitable for this project because the frontend submits user details to an API endpoint and receives calculated premium results in JSON format.</p>
+<p>Spring Boot is widely used for building Java-based web applications because it simplifies application configuration, dependency management, and REST API development. Java is also suitable for this project because it provides strong typing, object-oriented programming support, and reliable backend execution. On the frontend, HTML, CSS, and JavaScript provide a simple and browser-compatible way to build interactive forms and display dynamic results.</p>
+<p>This project follows a rule-based approach rather than a real actuarial pricing model. The objective is not to produce legally accurate commercial insurance quotes, but to demonstrate how an insurance premium estimation system can be designed and implemented using web technologies.</p>
+<h2>Objectives</h2>
+<p>The main objectives of this project are:</p>
+<ul>
+<li>To develop a web-based insurance premium calculator.</li>
+<li>To support premium estimation for health, vehicle, life, and travel insurance.</li>
+<li>To create a simple and user-friendly interface for selecting insurance type and entering details.</li>
+<li>To dynamically display input fields based on the selected insurance category.</li>
+<li>To calculate premium amount using predefined business rules.</li>
+<li>To calculate GST at 18% on the premium amount.</li>
+<li>To calculate the total payable amount after adding GST.</li>
+<li>To provide EMI options for 3, 6, 9, and 12 months.</li>
+<li>To implement backend processing using Spring Boot REST API.</li>
+<li>To demonstrate client-server communication using JavaScript Fetch API and JSON.</li>
+</ul>
+<h2>Methodology</h2>
+<p>The project follows a simple client-server methodology. The frontend collects user input, sends the data to the backend API, and displays the response received from the server.</p>
+<h2>Graphical Diagrams</h2>
+<h3>System Architecture Diagram</h3>
+<figure><img src="docs/diagrams/system-architecture.svg.png" alt="System Architecture Diagram"><figcaption>System Architecture Diagram</figcaption></figure>
+<h3>Use Case Diagram</h3>
+<figure><img src="docs/diagrams/use-case.svg.png" alt="Use Case Diagram"><figcaption>Use Case Diagram</figcaption></figure>
+<h3>Data Flow Diagram</h3>
+<figure><img src="docs/diagrams/data-flow.svg.png" alt="Data Flow Diagram"><figcaption>Data Flow Diagram</figcaption></figure>
+<h3>Activity Diagram</h3>
+<figure><img src="docs/diagrams/activity.svg.png" alt="Activity Diagram"><figcaption>Activity Diagram</figcaption></figure>
+<h3>Sequence Diagram</h3>
+<figure><img src="docs/diagrams/sequence.svg.png" alt="Sequence Diagram"><figcaption>Sequence Diagram</figcaption></figure>
+<h3>1. Requirement Analysis</h3>
+<p>The first step is to identify the major functions required in the system. The application should allow users to:</p>
+<ul>
+<li>Select an insurance type.</li>
+<li>Enter required information for the selected insurance type.</li>
+<li>Submit the form.</li>
+<li>View premium amount, GST, total amount, and EMI options.</li>
+</ul>
+<h3>2. System Design</h3>
+<p>The application is divided into two major parts:</p>
+<ul>
+<li>Frontend: A static web page developed using HTML, CSS, and JavaScript.</li>
+<li>Backend: A Spring Boot REST API developed using Java.</li>
+</ul>
+<p>The frontend file is located at:</p>
+<p><code>src/main/resources/static/index.html</code></p>
+<p>The backend controller is located at:</p>
+<p><code>src/main/java/com/calculate/insurance/insurancecalculator/controller/InsuranceController.java</code></p>
+<h3>3. Frontend Development</h3>
+<p>The frontend provides insurance selection cards for health, vehicle, life, and travel insurance. When the user selects an insurance type, JavaScript dynamically generates the required form fields. The interface also includes icons to improve visual clarity and usability.</p>
+<p>When the user submits the form, JavaScript collects the form data and sends a POST request to:</p>
+<p><code>/api/calculate-premium</code></p>
+<p>The request body is sent in JSON format.</p>
+<h3>4. Backend Development</h3>
+<p>The backend uses Spring Boot and exposes a REST endpoint:</p>
+<p><code>POST /api/calculate-premium</code></p>
+<p>The API accepts a <code>PremiumRequest</code> object and returns a <code>PremiumResponse</code> object. The request model contains input fields such as insurance type, age, coverage amount, vehicle value, vehicle age, trip cost, travel days, and number of travellers.</p>
+<p>The response model contains:</p>
+<ul>
+<li>Insurance type</li>
+<li>Premium amount</li>
+<li>GST amount</li>
+<li>Total amount</li>
+<li>EMI options</li>
+</ul>
+<h3>5. Premium Calculation Logic</h3>
+<p>The system uses predefined formulas for different insurance types.</p>
+<p>Health insurance:</p>
+<p><code>Premium = Coverage Amount * 0.02 + Number of Members * 1000</code></p>
+<p>If age is greater than 45, an additional amount of <code>2000</code> is added.</p>
+<p>Vehicle insurance:</p>
+<p>For car:</p>
+<p><code>Premium = Vehicle Value * 0.03</code></p>
+<p>For bike:</p>
+<p><code>Premium = Vehicle Value * 0.02</code></p>
+<p>An additional amount is added based on vehicle age:</p>
+<p><code>Vehicle Age * 500</code></p>
+<p>Life insurance:</p>
+<p><code>Premium = Coverage Amount * 0.015 + Policy Term * 300</code></p>
+<p>If age is greater than 40, an additional amount of <code>1500</code> is added.</p>
+<p>Travel insurance:</p>
+<p><code>Premium = Trip Cost * 0.01 + Travel Days * 50 + Travellers * 300</code></p>
+<p>After calculating the premium, GST is calculated as:</p>
+<p><code>GST = Premium * 0.18</code></p>
+<p>Total amount is calculated as:</p>
+<p><code>Total Amount = Premium + GST</code></p>
+<p>EMI options are calculated by dividing the total amount by 3, 6, 9, and 12 months.</p>
+<h3>6. Testing</h3>
+<p>The application is tested by running the Maven test command:</p>
+<p><code>./mvnw test</code></p>
+<p>The available Spring Boot application test verifies that the application context loads successfully.</p>
+<h2>Expected Result</h2>
+<p>The expected result of this project is a working web application that allows users to estimate insurance premiums quickly and clearly. Users should be able to:</p>
+<ul>
+<li>Open the insurance calculator in a browser.</li>
+<li>Select one of the available insurance types.</li>
+<li>Enter the required details for the selected insurance type.</li>
+<li>Submit the form to calculate the premium.</li>
+<li>View the base premium, GST amount, total amount, and EMI options.</li>
+</ul>
+<p>The system is expected to improve the ease of premium estimation by reducing manual calculation. It should also provide a clean and interactive interface with icons, structured input fields, and tabular result presentation.</p>
+<p>Since the calculation rules are fixed and simplified, the result should be treated as an estimated academic calculation rather than an official insurance quote.</p>
+<h2>Work Plan</h2>
+<table>
+<thead><tr>
+<th>Phase</th>
+<th>Task</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Phase 1</td>
+<td>Requirement Study</td>
+<td>Identify required insurance types, input fields, and expected outputs.</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>System Design</td>
+<td>Plan frontend page, backend API, request model, and response model.</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>Frontend Development</td>
+<td>Create insurance selection UI, dynamic forms, styling, icons, and result table.</td>
+</tr>
+<tr>
+<td>Phase 4</td>
+<td>Backend Development</td>
+<td>Implement Spring Boot application, REST controller, and premium calculation logic.</td>
+</tr>
+<tr>
+<td>Phase 5</td>
+<td>Integration</td>
+<td>Connect frontend form submission with backend API using Fetch API.</td>
+</tr>
+<tr>
+<td>Phase 6</td>
+<td>Testing</td>
+<td>Test form inputs, API response, calculation output, and application startup.</td>
+</tr>
+<tr>
+<td>Phase 7</td>
+<td>Documentation</td>
+<td>Prepare project report with objectives, methodology, expected result, and references.</td>
+</tr>
+<tr>
+<td>Phase 8</td>
+<td>Future Enhancement</td>
+<td>Add database storage, user login, validation, admin module, and more accurate pricing models.</td>
+</tr>
+</tbody></table>
+<h2>References</h2>
+<p>1. Spring. &quot;Spring Boot Documentation.&quot; Available at: https://docs.spring.io/spring-boot/documentation.html 2. Oracle. &quot;JDK 17 Documentation.&quot; Available at: https://docs.oracle.com/en/java/javase/17/ 3. MDN Web Docs. &quot;Fetch API.&quot; Available at: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API 4. MDN Web Docs. &quot;HTML: HyperText Markup Language.&quot; Available at: https://developer.mozilla.org/en-US/docs/Web/HTML 5. MDN Web Docs. &quot;CSS: Cascading Style Sheets.&quot; Available at: https://developer.mozilla.org/en-US/docs/Web/CSS 6. Project source code: <code>InsuranceCalculator</code> Spring Boot application.</p>
+</body>
+</html>

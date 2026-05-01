@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Use Case Diagram</title>
+  <desc id="desc">User use cases for selecting insurance, entering details, calculating premium, and viewing results.</desc>
+  <defs>
+    <style>
+      .title{font-family:Arial,sans-serif;font-size:24px;font-weight:700;fill:#0f766e;text-anchor:middle}
+      .txt{font-family:Arial,sans-serif;font-size:16px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .small{font-family:Arial,sans-serif;font-size:13px;fill:#475569;text-anchor:middle}
+      .case{fill:#ecfdf5;stroke:#0f766e;stroke-width:2}
+      .actor{stroke:#0f172a;stroke-width:2.2;fill:none}
+      .line{stroke:#334155;stroke-width:2;fill:none}
+      .boundary{fill:#ffffff;stroke:#cbd5e1;stroke-width:2;rx:14}
+    </style>
+  </defs>
+  <rect width="900" height="520" fill="#f8fafc"/>
+  <text x="450" y="42" class="title">Use Case Diagram</text>
+  <rect x="245" y="80" width="580" height="380" class="boundary"/>
+  <text x="535" y="112" class="small">Insurance Premium Calculator System</text>
+
+  <circle cx="100" cy="150" r="24" class="actor"/>
+  <path d="M100 174 V250 M62 205 H138 M100 250 L65 315 M100 250 L135 315" class="actor"/>
+  <text x="100" y="350" class="txt">User</text>
+
+  <ellipse cx="470" cy="155" rx="145" ry="34" class="case"/>
+  <text x="470" y="161" class="txt">Select Insurance Type</text>
+  <ellipse cx="590" cy="225" rx="145" ry="34" class="case"/>
+  <text x="590" y="231" class="txt">Enter Required Details</text>
+  <ellipse cx="470" cy="295" rx="145" ry="34" class="case"/>
+  <text x="470" y="301" class="txt">Calculate Premium</text>
+  <ellipse cx="590" cy="365" rx="145" ry="34" class="case"/>
+  <text x="590" y="371" class="txt">View GST, Total, EMI</text>
+
+  <path d="M138 205 L330 155" class="line"/>
+  <path d="M138 215 L445 225" class="line"/>
+  <path d="M138 225 L325 295" class="line"/>
+  <path d="M138 235 L445 365" class="line"/>
+</svg>
