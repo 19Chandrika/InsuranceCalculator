@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Premium Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f766e;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .insurance-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .option.selected {
+            border-color: #0f766e;
+            background: #ecfdf5;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 12px 18px;
+            border: 0;
+            border-radius: 6px;
+            background: #0f766e;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #115e59;
+        }
+
+        .result {
+            line-height: 1.8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #e5e7eb;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Insurance Premium Calculator</h1>
+
+    <div class="box">
+        <h2>Select Insurance</h2>
+        <div class="insurance-options">
+            <div class="option" onclick="selectInsurance('health', this)">
+                <h3>Health Insurance</h3>
+                <p>For medical expenses</p>
+            </div>
+            <div class="option" onclick="selectInsurance('vehicle', this)">
+                <h3>Vehicle Insurance</h3>
+                <p>For car or bike protection</p>
+            </div>
+            <div class="option" onclick="selectInsurance('life', this)">
+                <h3>Life Insurance</h3>
+                <p>For family protection</p>
+            </div>
+            <div class="option" onclick="selectInsurance('travel', this)">
+                <h3>Travel Insurance</h3>
+                <p>For trip protection</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailsBox" class="box hidden">
+        <h2 id="formTitle">Insurance Details</h2>
+
+        <form id="insuranceForm">
+            <div id="formFields"></div>
+            <button type="submit">Calculate Premium</button>
+        </form>
+    </div>
+
+    <div id="resultBox" class="box hidden">
+        <h2>Premium Details</h2>
+        <div id="result" class="result"></div>
+    </div>
+</div>
+
+<script>
+    let selectedInsurance = "";
+
+    const insuranceNames = {
+        health: "Health Insurance",
+        vehicle: "Vehicle Insurance",
+        life: "Life Insurance",
+        travel: "Travel Insurance"
+    };
+
+    function selectInsurance(type, selectedCard) {
+        selectedInsurance = type;
+
+        const options = document.querySelectorAll(".option");
+        options.forEach(option => option.classList.remove("selected"));
+        selectedCard.classList.add("selected");
+
+        document.getElementById("detailsBox").classList.remove("hidden");
+        document.getElementById("resultBox").classList.add("hidden");
+        document.getElementById("formTitle").innerText = insuranceNames[type] + " Details";
+
+        showFields(type);
+    }
+
+    function showFields(type) {
+        let fields = "";
+
+        if (type === "health") {
+            fields = `
+                <label>Age</label>
+                <input type="number" id="age" min="1" required>
+
+                <label>Coverage Amount</label>
+                <input type="number" id="coverage" min="10000" required>
+
+                <label>Number of Family Members</label>
+                <input type="number" id="members" min="1" required>
+            `;
+        }
+
+        if (type === "vehicle") {
+            fields = `
+                <label>Vehicle Type</label>
+                <select id="vehicleType" required>
+                    <option value="bike">Bike</option>
+                    <option value="car">Car</option>
+                </select>
+
+                <label>Vehicle Value</label>
+                <input type="number" id="vehicleValue" min="10000" required>
+
+                <label>Vehicle Age in Years</label>
+                <input type="number" id="vehicleAge" min="0" required>
+            `;
+        }
+
+        if (type === "life") {
+            fields = `
+                <label>Age</label>
+                <input type="number" id="age" min="18" required>
+
+                <label>Sum Assured</label>
+                <input type="number" id="coverage" min="100000" required>
+
+                <label>Policy Term in Years</label>
+                <input type="number" id="term" min="5" required>
+            `;
+        }
+
+        if (type === "travel") {
+            fields = `
+                <label>Trip Cost</label>
+                <input type="number" id="tripCost" min="1000" required>
+
+                <label>Number of Travel Days</label>
+                <input type="number" id="days" min="1" required>
+
+                <label>Number of Travellers</label>
+                <input type="number" id="travellers" min="1" required>
+            `;
+        }
+
+        document.getElementById("formFields").innerHTML = fields;
+    }
+
+    document.getElementById("insuranceForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        sendDetailsToApi();
+    });
+
+    async function sendDetailsToApi() {
+        const requestData = collectFormData();
+
+        const response = await fetch("/api/calculate-premium", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestData)
+        });
+
+        const result = await response.json();
+        showResult(result);
+    }
+
+    function collectFormData() {
+        const requestData = {
+            insuranceType: selectedInsurance
+        };
+
+        if (selectedInsurance === "health") {
+            requestData.age = Number(document.getElementById("age").value);
+            requestData.coverage = Number(document.getElementById("coverage").value);
+            requestData.members = Number(document.getElementById("members").value);
+        }
+
+        if (selectedInsurance === "vehicle") {
+            requestData.vehicleType = document.getElementById("vehicleType").value;
+            requestData.vehicleValue = Number(document.getElementById("vehicleValue").value);
+            requestData.vehicleAge = Number(document.getElementById("vehicleAge").value);
+        }
+
+        if (selectedInsurance === "life") {
+            requestData.age = Number(document.getElementById("age").value);
+            requestData.coverage = Number(document.getElementById("coverage").value);
+            requestData.term = Number(document.getElementById("term").value);
+        }
+
+        if (selectedInsurance === "travel") {
+            requestData.tripCost = Number(document.getElementById("tripCost").value);
+            requestData.days = Number(document.getElementById("days").value);
+            requestData.travellers = Number(document.getElementById("travellers").value);
+        }
+
+        return requestData;
+    }
+
+    function showResult(result) {
+        document.getElementById("resultBox").classList.remove("hidden");
+
+        document.getElementById("result").innerHTML = `
+            <table>
+                <tr>
+                    <th>Detail</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>Selected Insurance</td>
+                    <td>${insuranceNames[selectedInsurance]}</td>
+                </tr>
+                <tr>
+                    <td>Premium Amount</td>
+                    <td>Rs. ${result.premium.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>GST 18%</td>
+                    <td>Rs. ${result.gst.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Total Amount</td>
+                    <td>Rs. ${result.totalAmount.toFixed(2)}</td>
+                </tr>
+            </table>
+
+            <h3>EMI Options</h3>
+            <table>
+                <tr>
+                    <th>Months</th>
+                    <th>Monthly EMI</th>
+                </tr>
+                <tr>
+                    <td>3 Months</td>
+                    <td>Rs. ${result.emiOptions[3].toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>6 Months</td>
+                    <td>Rs. ${result.emiOptions[6].toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>9 Months</td>
+                    <td>Rs. ${result.emiOptions[9].toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>12 Months</td>
+                    <td>Rs. ${result.emiOptions[12].toFixed(2)}</td>
+                </tr>
+            </table>
+        `;
+    }
+</script>
+</body>
+</html>
