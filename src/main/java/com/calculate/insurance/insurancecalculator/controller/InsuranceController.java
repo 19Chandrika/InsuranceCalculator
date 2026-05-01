@@ -1,14 +1,12 @@
-package com.calculate.insurance.insurancecalculator;
+package com.calculate.insurance.insurancecalculator.controller;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.calculate.insurance.insurancecalculator.model.PremiumRequest;
 import com.calculate.insurance.insurancecalculator.model.PremiumResponse;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.jspecify.annotations.NonNull;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -48,6 +46,12 @@ public class InsuranceController {
             premium = request.getTripCost() * 0.01 + request.getDays() * 50 + request.getTravellers() * 300;
         }
 
+        PremiumResponse response = getPremiumResponse(request, premium);
+
+        return response;
+    }
+
+    private static @NonNull PremiumResponse getPremiumResponse(PremiumRequest request, double premium) {
         double gst = premium * 0.18;
         double totalAmount = premium + gst;
 
@@ -63,7 +67,6 @@ public class InsuranceController {
         response.setGst(gst);
         response.setTotalAmount(totalAmount);
         response.setEmiOptions(emiOptions);
-
         return response;
     }
 }

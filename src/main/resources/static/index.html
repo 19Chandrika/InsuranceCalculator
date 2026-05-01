@@ -367,7 +367,7 @@
     async function sendDetailsToApi() {
         const requestData = collectFormData();
 
-        const response = await fetch("/api/calculate-premium", {
+        const response = await fetch("/insurance/api/calculate-premium", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
