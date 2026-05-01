@@ -1,4 +1,4 @@
-package com.calculate.insurance.insurancecalculator;
+package com.calculate.insurance.insurancecalculator.model;
 
 public class PremiumRequest {
 
